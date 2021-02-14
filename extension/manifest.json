@@ -8,5 +8,5 @@
     "default_icon": "./images/logo.png",
     "default_popup": "popup.html"
   },
-  "permissions": ["activeTab"]
+  "permissions": ["activeTab", "webRequest"]
 }

@@ -4,7 +4,7 @@ body {
   font-size: 14px;
   margin: 0;
   padding: 0;
-  width: 484px;
+  width: fit-content;
   max-height: 300px;
   overflow-y: scroll;
 }
