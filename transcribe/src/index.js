@@ -7,9 +7,9 @@ const PORT = 3000;
 
 app.use(cors());
 
-app.get('/test', async(req, res) => {
+app.get('/test/:targetWord', async(req, res) => {
     var videoURL = decodeURIComponent("youtube.com/api/timedtext?v=bXTsjwyMKr0\u0026asr_langs=de,en,es,fr,it,ja,ko,nl,pt,ru\u0026caps=asr\u0026exp=xftt\u0026xorp=true\u0026xoaf=5\u0026hl=en\u0026ip=0.0.0.0\u0026ipbits=0\u0026expire=1613302100\u0026sparams=ip,ipbits,expire,v,asr_langs,caps,exp,xorp,xoaf\u0026signature=C3898F27A440C2230551C20C5EC92F4C719C82A7.8EE62818C71C22EA5058C08C55E43A699B394968\u0026key=yt8\u0026kind=asr\u0026lang=en");
-    var targetWord = "china"
+    var targetWord = req.params.targetWord;
     var url = "http://localhost:3000/transcribe/" + targetWord + "/" + encodeURIComponent(videoURL);
     await axios({
         method: "GET",
@@ -21,67 +21,6 @@ app.get('/test', async(req, res) => {
         // console.log(response.data);
         res.send(response.data);
     });
-
-})
-
-app.get('/testResponse', async(req, res) => {
-    
-    // await axios({
-    //     method: "GET",
-    //     url: url,
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     }
-    // }).then(response => {
-    //     // console.log(response.data);
-    //     res.send(response.data);
-    // });
-
-    res.json({
-        "Questions": [
-            {
-                "Question": "The president that abolished slavery is...",
-                "Answer": "Abraham Lincoln"
-            },
-            {
-                "Question": "The first US president is...",
-                "Answer": "George Washington"
-            },
-            {
-                "Question": "Where did a medieval knight wear his gauntlets?",
-                "Answer": "On his hands"
-            },
-            {
-                "Question": "Whose secretary was Loelia Ponsonby?.",
-                "Answer": "James Bond's"
-            },
-            {
-                "Question": "What are the two primary ingredients that go into a Hollandaise sauce? ",
-                "Answer": "Butter and egg yolks"
-            },
-            {
-                "Question": "In what year did Atlanta become the fifth capital of Georgia?",
-                "Answer": "1868"
-            },
-            {
-                "Question": "Who was the first thoroughbred horse to win one million dollars?",
-                "Answer": "Citation"
-            },
-            {
-                "Question": "Which French singer and actor sings the theme song to Disney's film 'The Aristocats?'",
-                "Answer": "Maurice Chevalier"
-            },
-            {
-                "Question": "The Missouri River flows into what river?",
-                "Answer": "Mississippi River"
-            },
-            {
-                "Question": "Which building is typically considered to be the first skyscraper?",
-                "Answer": "The Home Insurance Building"
-            }
-        ]
-        }
-    )
 
 })
 
