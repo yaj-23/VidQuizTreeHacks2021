@@ -2,7 +2,10 @@ const axios = require('axios');
 const { text } = require('express');
 const express = require('express');
 const app = express();
+var cors = require('cors');
 const PORT = 3000;
+
+app.use(cors());
 
 app.get('/test', async(req, res) => {
     var videoURL = decodeURIComponent("youtube.com/api/timedtext?v=bXTsjwyMKr0\u0026asr_langs=de,en,es,fr,it,ja,ko,nl,pt,ru\u0026caps=asr\u0026exp=xftt\u0026xorp=true\u0026xoaf=5\u0026hl=en\u0026ip=0.0.0.0\u0026ipbits=0\u0026expire=1613273319\u0026sparams=ip,ipbits,expire,v,asr_langs,caps,exp,xorp,xoaf\u0026signature=61721DE3108AC634509B1631F2C5293A63361431.ADC4C4CF6FA73C34405C8B7F2784971D05E0B33D\u0026key=yt8\u0026kind=asr\u0026lang=en");
@@ -83,7 +86,7 @@ app.get('/testResponse', async(req, res) => {
 
 
 
-app.get('/', async(req, res) => {
+app.get('/', async (req, res) => {
     res.send("Hello Wolrd");
 })
  
