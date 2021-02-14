@@ -15,7 +15,7 @@ app.get('/test', async(req, res) => {
         }
     }).then(response => {
         // console.log(response.data);
-        res.send(response.data);
+        res.json(response.data);
     });
 
 })
@@ -83,7 +83,9 @@ app.get('/testResponse', async(req, res) => {
 
 
 
-
+app.get('/', async(req, res) => {
+    res.send("Hello Wolrd");
+})
  
 app.get('/transcribe/:url', async(req, res) => {
     baseURL = decodeURIComponent(req.params.url);

@@ -1,2 +1,2 @@
 transcribe.js
-transcribe/node_modules/*
+# transcribe/node_modules/*
